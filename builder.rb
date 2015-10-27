@@ -1,4 +1,4 @@
-autoload :Lundby, "#{BUILDER_DIRECTORY}/lundby.rb"
+require_relative "lundby.rb"
 require 'numbers_in_words'
 require 'numbers_in_words/duck_punch'
 require 'httparty'
@@ -99,7 +99,7 @@ class Builder
         print '.'
 
         if response['success']
-          built << "#{Time.now.strftime('%X')}: #{@number} #{type['name']}s"
+          built << "#{Time.now.strftime('%l:%M %p')}: #{@number} #{type['name']}s"
           puts
           puts ["All Done!", "Snazzy!", "Ka-Pow!", "Fancy!", "Wowzers!"].sample
           sleep 1

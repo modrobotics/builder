@@ -1,4 +1,5 @@
-autoload :Builder, './builder.rb'
-require './types_misc.rb'
+require_relative "constants.rb"
+require_relative "builder.rb"
+require_relative "types_misc.rb"
 
 Builder.build(TYPES, false)

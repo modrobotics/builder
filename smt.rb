@@ -1,5 +1,5 @@
-require "C:/cygwin64/home/shmee_000/builder/constants.rb"
-autoload :Builder, "#{BUILDER_DIRECTORY}/builder.rb"
-require "#{BUILDER_DIRECTORY}/types_smt.rb"
+require_relative "constants.rb"
+require_relative "builder.rb"
+require_relative "types_smt.rb"
 
 Builder.build(TYPES, false)

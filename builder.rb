@@ -99,7 +99,7 @@ class Builder
         print '.'
 
         if response['success']
-          built << "#{Time.now.strftime('%l:%M %p')}: #{@number} #{type['name']}s"
+          built << "#{@number} #{type['name']}s (#{Time.now.strftime('%I:%M %p')})"
           puts
           puts ["All Done!", "Snazzy!", "Ka-Pow!", "Fancy!", "Wowzers!"].sample
           sleep 1

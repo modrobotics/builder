@@ -2,8 +2,8 @@ require 'numbers_in_words'
 require 'numbers_in_words/duck_punch'
 require 'httparty'
 
-response = JSON.parse(HTTParty.get("http://dash.modrobotics.com/modules/assemblyCompletions/api.php",
-                                   query: {"action" => 'getItems', "secret" => 'depressedleprechaun'}).body)
+response = JSON.parse(HTTParty.get("https://dash.modrobotics.com/modules/assemblyCompletions/api.php",
+                                   verify: false, query: {"action" => 'getItems', "secret" => 'depressedleprechaun'}).body)
 
 all_types = [
              {title: 'Box Cubelets', types: response.select{|t| t['category'] == "box_cubelet"}}, 
@@ -63,13 +63,14 @@ loop do
     print "Now building #{@quantity} #{type['name']}s"
     print '.'
     response = HTTParty.post(
-                             "http://dash.modrobotics.com/modules/assemblyCompletions/api.php",
+                             "https://dash.modrobotics.com/modules/assemblyCompletions/api.php",
                              body: {
                                "action" => 'postCompletion', 
                                "secret" => "depressedleprechaun", 
                                "task_type_id" => type['id'], 
                                "last_name" => last_name, 
-                               "quantity" => @quantity}
+                               "quantity" => @quantity},
+			     verify: false
                              )
 
     if response['success']

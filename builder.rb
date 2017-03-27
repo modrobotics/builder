@@ -2,7 +2,7 @@ require 'numbers_in_words'
 require 'numbers_in_words/duck_punch'
 require 'httparty'
 
-response = JSON.parse(HTTParty.get("https://dash.modrobotics.com/modules/assemblyCompletions/api.php",
+response = JSON.parse(HTTParty.get("http://dash.modrobotics.com/modules/assemblyCompletions/api.php",
                                    query: {"action" => 'getItems', "secret" => 'depressedleprechaun'}).body)
 
 all_types = [
@@ -63,7 +63,7 @@ loop do
     print "Now building #{@quantity} #{type['name']}s"
     print '.'
     response = HTTParty.post(
-                             "https://dash.modrobotics.com/modules/assemblyCompletions/api.php",
+                             "http://dash.modrobotics.com/modules/assemblyCompletions/api.php",
                              body: {
                                "action" => 'postCompletion', 
                                "secret" => "depressedleprechaun", 
